@@ -105,12 +105,12 @@ const App: React.FC = () => {
               </div>
             )}
             <div className="space-y-4">
-              <h1 className="text-7xl md:text-8xl font-serif-elegant text-white mb-6 leading-tight tracking-tighter">
+              <h1 className="text-7xl md:text-8xl font-serif-elegant text-white mb-6 leading-tight tracking-tighter uppercase">
                 Jornada <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600">DISC</span>
-                <div className="text-2xl md:text-3xl text-slate-500 font-sans tracking-widest mt-4 uppercase font-medium">by Edilson Morais</div>
+                <div className="text-2xl md:text-3xl text-slate-500 font-sans tracking-widest mt-4 uppercase font-medium">BY EDILSON MORAIS</div>
               </h1>
               <p className="text-xl md:text-2xl text-slate-400 leading-relaxed font-light max-w-2xl mx-auto">
-                Desvende o seu perfil comportamental em 5 minutos e receba um mapa detalhado da sua essência.
+                Um teste rápido e intuitivo para te ajudar a se conhecer melhor. O resultado chega direto no seu e-mail.
               </p>
             </div>
             <div className="pt-8">
@@ -129,16 +129,17 @@ const App: React.FC = () => {
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                 </svg>
               </div>
-              <h1 className="text-5xl md:text-6xl font-serif-elegant text-white tracking-tight uppercase">Privacidade</h1>
+              <h1 className="text-5xl md:text-6xl font-serif-elegant text-white tracking-tight">Sua privacidade é respeitada.</h1>
             </div>
             <div className="bg-[#111827]/60 border border-slate-800 rounded-[40px] p-8 md:p-12 backdrop-blur-xl shadow-2xl space-y-6 text-left">
-              <p className="text-slate-300 text-lg leading-relaxed text-center">
-                Não armazenamos suas respostas. O resultado é processado pelo n8n e enviado para o seu e-mail, sendo descartado de nossos registros após o envio.
+              <p className="text-slate-300 text-lg leading-relaxed text-center font-light">
+                As respostas são usadas apenas para gerar seu resultado e enviá-lo por e-mail.
+                Depois disso, elas são descartadas.
               </p>
             </div>
             <div className="pt-4 flex flex-col md:flex-row items-center justify-center gap-4">
               <button onClick={() => setStep(AppStep.ONBOARDING)} className="px-12 py-5 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-2xl transition-all shadow-xl active:scale-95 text-lg tracking-widest uppercase w-full md:w-auto">
-                Concordar e Continuar
+                Tudo certo, vamos continuar
               </button>
               <button onClick={() => setStep(AppStep.LANDING)} className="px-12 py-5 bg-slate-800 text-slate-400 font-bold rounded-2xl transition-all text-lg tracking-widest uppercase w-full md:w-auto">
                 Voltar
@@ -148,22 +149,34 @@ const App: React.FC = () => {
         )}
 
         {step === AppStep.ONBOARDING && (
-          <div className="max-w-lg w-full space-y-8 text-center animate-in fade-in slide-in-from-bottom-8 duration-700">
-            <h1 className="text-5xl font-serif-elegant text-white mb-4">Prepare-se</h1>
+          <div className="max-w-2xl w-full space-y-8 text-center animate-in fade-in slide-in-from-bottom-8 duration-700">
+            <div className="space-y-6">
+              <h1 className="text-5xl font-serif-elegant text-white mb-4">Vamos começar 😊</h1>
+              <div className="space-y-6 text-slate-300 text-lg font-light leading-relaxed">
+                <p>Essas informações são usadas apenas para enviar seu resultado.</p>
+                <div className="bg-emerald-500/5 border-l-4 border-emerald-500 p-8 rounded-r-[32px] text-left space-y-4">
+                  <p className="font-medium text-emerald-400">O teste é rápido e não existe resposta certa ou errada,</p>
+                  <p className="font-medium text-emerald-400">Responda com sinceridade e no seu ritmo.</p>
+                  <p className="font-medium text-emerald-400">Confie na primeira resposta que vier à mente.</p>
+                </div>
+              </div>
+            </div>
             <form onSubmit={startTest} className="bg-[#111827] p-8 rounded-[32px] border border-slate-800 shadow-2xl space-y-6 text-left">
-              <div className="space-y-2">
-                <label className="text-slate-400 text-sm font-medium">Nome Completo</label>
-                <input required value={employee.name} onChange={e => setEmployee({...employee, name: e.target.value})} placeholder="Seu nome" className="w-full bg-[#0f172a] border border-slate-800 rounded-2xl py-4 px-6 text-white focus:ring-2 focus:ring-emerald-500/50 outline-none" />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-slate-400 text-sm font-medium">Nome Completo</label>
+                  <input required value={employee.name} onChange={e => setEmployee({...employee, name: e.target.value})} placeholder="Seu nome" className="w-full bg-[#0f172a] border border-slate-800 rounded-2xl py-4 px-6 text-white focus:ring-2 focus:ring-emerald-500 outline-none" />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-slate-400 text-sm font-medium">Idade</label>
+                  <input required value={employee.age} onChange={e => setEmployee({...employee, age: e.target.value})} placeholder="Sua idade" className="w-full bg-[#0f172a] border border-slate-800 rounded-2xl py-4 px-6 text-white focus:ring-2 focus:ring-emerald-500 outline-none" />
+                </div>
               </div>
               <div className="space-y-2">
                 <label className="text-slate-400 text-sm font-medium">E-mail</label>
-                <input required type="email" value={employee.email} onChange={e => setEmployee({...employee, email: e.target.value})} placeholder="Para receber o laudo" className="w-full bg-[#0f172a] border border-slate-800 rounded-2xl py-4 px-6 text-white focus:ring-2 focus:ring-emerald-500/50 outline-none" />
+                <input required type="email" value={employee.email} onChange={e => setEmployee({...employee, email: e.target.value})} placeholder="Para receber o laudo" className="w-full bg-[#0f172a] border border-slate-800 rounded-2xl py-4 px-6 text-white focus:ring-2 focus:ring-emerald-500 outline-none" />
               </div>
-              <div className="space-y-2">
-                <label className="text-slate-400 text-sm font-medium">Idade</label>
-                <input required value={employee.age} onChange={e => setEmployee({...employee, age: e.target.value})} placeholder="Sua idade" className="w-full bg-[#0f172a] border border-slate-800 rounded-2xl py-4 px-6 text-white focus:ring-2 focus:ring-emerald-500/50 outline-none" />
-              </div>
-              <button type="submit" className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-5 rounded-2xl transition-all text-lg uppercase tracking-widest">Iniciar Teste</button>
+              <button type="submit" className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-5 rounded-2xl transition-all text-lg uppercase tracking-widest shadow-xl">Iniciar Teste</button>
             </form>
           </div>
         )}
@@ -189,8 +202,8 @@ const App: React.FC = () => {
         {step === AppStep.LOADING && (
           <div className="text-center space-y-6">
             <div className="w-24 h-24 border-4 border-slate-800 border-t-emerald-500 rounded-full animate-spin mx-auto" />
-            <h2 className="text-3xl font-serif-elegant text-white">Criando seu Mapa...</h2>
-            <p className="text-slate-400 max-w-sm mx-auto">Sua jornada está sendo processada via n8n pela nossa inteligência artificial.</p>
+            <h2 className="text-3xl font-serif-elegant text-white">Analisando seu perfil...</h2>
+            <p className="text-slate-400 max-w-sm mx-auto">Quase lá! Estamos preparando seu relatório personalizado.</p>
           </div>
         )}
 
@@ -232,12 +245,18 @@ const App: React.FC = () => {
                 }} 
                 className="px-12 py-5 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-2xl transition-all shadow-[0_0_30px_rgba(34,197,94,0.3)] active:scale-95 text-xl tracking-widest uppercase"
               >
-                Início
+                Refazer Teste
               </button>
             </div>
           </div>
         )}
       </main>
+
+      <footer className="py-8 text-center border-t border-slate-800/50 mt-12">
+        <p className="text-slate-500 text-sm font-medium tracking-widest uppercase">
+          © {new Date().getFullYear()} Jornada DISC • Edilson Morais
+        </p>
+      </footer>
     </div>
   );
 };
